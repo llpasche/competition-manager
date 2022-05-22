@@ -9,11 +9,24 @@ export class Migrations extends BaseDatabase {
     this.connection
       .raw(
         `
-     
+        CREATE TABLE IF NOT EXISTS competition(  
+          id VARCHAR(255) NOT NULL PRIMARY KEY,
+          name VARCHAR(255) NOT NULL UNIQUE,
+          date VARCHAR(255) NOT NULL,
+          is_finished BOOLEAN NOT NULL
+      );
+        CREATE TABLE IF NOT EXISTS result(  
+          id VARCHAR(255) NOT NULL PRIMARY KEY,
+          competition VARCHAR(255) NOT NULL,
+          athlete VARCHAR(255) NOT NULL,
+          value DOUBLE NOT NULL
+          unit ENUM('s', 'm') NOT NULL,
+          FOREIGN KEY (competition) REFERENCES competition (name)
+      );
    `
       )
       .then(() => {
-        console.log("Tabelas criadas");
+        console.log("Tables created.");
       })
       .catch(this.printError);
 

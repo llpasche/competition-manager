@@ -9,7 +9,7 @@ https://case-estante-virtual.herokuapp.com/
 
 
 
-# 🚀 Gettin started
+# 🚀 Getting started
 
 ### 📋 Requirements
 
